@@ -35,10 +35,10 @@ public:
 	static int samplesBucket_accur;
 
 	static const bool fullCount = true;
-	static const double errorMargin = 0;
+	static constexpr double errorMargin = 0;
 	static bool divideBigTasks;
 	static bool predictOnTheGo;//true means I can estimate new patterns that were never estimated before
-	static const double validsPerTaskMargin = 0.8;
+	static constexpr double validsPerTaskMargin = 0.8;
 	static long graphLoadingTime;
 	static long phase2Time;
 	static bool debugMSG;

@@ -176,17 +176,20 @@ int main( int argc, char *argv[] )
 
 	//initialize MPI
 	int i;
-	int rank;
-	int numWorkers;
 	MPI_Status    status;
 	srand (time(NULL));
 
-	int provided = MPI::Init_thread(argc, argv, MPI_THREAD_MULTIPLE);
+	// int provided = MPI::Init_thread(argc, argv, MPI_THREAD_MULTIPLE);
+	int provided;
+	MPI_Init_thread(&argc, &argv, MPI_THREAD_MULTIPLE, &provided);
 	if(provided != MPI_THREAD_MULTIPLE){
 		cout<<"Provided = "<<provided<<endl;
 		cout<<"ERROR: Cannot initialize MPI with the desire level of support";
 	}
-	rank = MPI::COMM_WORLD.Get_rank();
+	// rank = MPI::COMM_WORLD.Get_rank();
+	int rank;
+	int numWorkers;
+	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	MPI_Comm_size(MPI_COMM_WORLD, &numWorkers);
 
 	//start the master process
@@ -247,7 +250,7 @@ int main( int argc, char *argv[] )
 
 		cout<<"Finished!";
 
-		MPI::Finalize();
+		MPI_Finalize();
 
 		delete miner;
 		delete exactMiner;

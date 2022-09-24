@@ -25,7 +25,7 @@ along with Grami.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef WORKER_H_
 #define WORKER_H_
 
-#include "Pattern.h";
+#include "Pattern.h"
 
 
 #define BUFFERSIZE 2000
